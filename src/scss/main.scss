@@ -1,0 +1,9 @@
+@use './partials/variables' as *;
+@use './partials/general' as *;
+
+@import 'bootstrap/scss/bootstrap';
+
+
+body {
+	background-color: #D48F38;
+}
