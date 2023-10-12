@@ -1,36 +1,63 @@
 <script>
 
+import { store } from '../data/store';
 import Card from './partials/Card.vue';
+import Loader from './partials/Loader.vue';
+
+
 export default {
 	name: 'Main',
 	components:{
-		Card
-	}
+		Card,
+		Loader
+	},
+	data() {
+		return {
+			store,
+			selected: '',
+		}
+	},
+	methods: {
+		getImage(){
+			return result ()
+		}
+	},
+	computed: {
+		resultQuery(){
+			return cardList.filter(card => {
+				card.name.toLowerCase().includes(this.selected.toLowerCase()) || card.archetype.toLowerCase().includes(this.selected.toLowerCase())
+			})
+    }
+	},
+	mounted() {
+		console.log()
+	},
 }
 </script>
 
 <template>
 	<main>
-		<div>ciao</div>
+		<select 
+			class="form-select form-select-lg my-3" 
+			v-model="selected"
+		>
+		  <option selected>Open this select menu</option>
+		  <option value="Alien">Alien</option>
+		  <option value="2">Two</option>
+		  <option value="3">Three</option>
+		</select>
 		<div class="container">
 			<div class="results">results</div>
+			<Loader v-if="store.cardList.length <= 0"
+		/>
 			<div class="row card-wrapper">
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-			
-			
+				<Card 
+					v-for="card in store.cardList"
+					:key="card.id"
+					:name="card.name"
+					:archetype="card.archetype"
+					:image="card.card_images.image_url"
+				/>
 			</div>	
 		</div>
 	</main>

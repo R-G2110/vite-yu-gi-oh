@@ -1,25 +1,43 @@
 <script>
+import { store } from '../../data/store';
 export default {
   name: 'Card',
-  // props:{
-  //   id: Number,
-  //   name: String,
-	// 	frameType: String,
-  //   desc: String,
-  //   image_url: String
-  // }
+	data() {
+		return {
+			store
+		}
+	},
+  props:{
+    id: Number,
+    name: String,
+		frameType: String,
+		archetype: String,
+    desc: String,
+    image: String
+  },
+	mounted() {
+		
+	},
 }
 </script>
 
 <template>
 	<div class="col-2">
 		<div class="card">
-			<div class="card-image">
-				<img src="https://images.ygoprodeck.com/images/cards/34541863.jpg" alt="">
+			<div 
+		
+				class="card-image"
+			>
+				<!-- <img 
+					
+					:src="img.image_url" 
+					:alt="name"
+				> -->
+				<img :src="image" alt="">
 			</div>
-			<div class="card-info">
-				<h2>name</h2>
-				<p>type</p>
+			<div class="card-info my-3">
+				<h5>{{ name }}</h5>
+				<p>{{ archetype }}</p>
 			</div>
 		</div>
 	</div>
@@ -33,7 +51,8 @@ export default {
 .card {
 	color: white;
 	background-color: #D48F38;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
+	max-height: 500px;
 	
 	.card-image {
 		width: 100%;
