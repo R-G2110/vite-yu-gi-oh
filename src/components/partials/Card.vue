@@ -24,19 +24,11 @@ export default {
 <template>
 	<div class="col-2">
 		<div class="card">
-			<div 
-		
-				class="card-image"
-			>
-				<!-- <img 
-					
-					:src="img.image_url" 
-					:alt="name"
-				> -->
-				<img :src="image" alt="">
+			<div class="card-image">
+				<img :src="image" :alt="name">
 			</div>
 			<div class="card-info my-3">
-				<h5>{{ name }}</h5>
+				<h6>{{ name }}</h6>
 				<p>{{ archetype }}</p>
 			</div>
 		</div>
@@ -52,7 +44,7 @@ export default {
 	color: white;
 	background-color: #D48F38;
 	margin-bottom: 20px;
-	max-height: 500px;
+	height: 380px;
 	
 	.card-image {
 		width: 100%;

@@ -18,8 +18,8 @@ export default {
 		}
 	},
 	methods: {
-		getImage(){
-			return result ()
+		getImagePath(img){
+			return new URL(`${img}`,import.meta.url).href;
 		}
 	},
 	computed: {
@@ -48,15 +48,14 @@ export default {
 		</select>
 		<div class="container">
 			<div class="results">results</div>
-			<Loader v-if="store.cardList.length <= 0"
-		/>
+			<Loader v-if="store.cardList.length <= 0" />
 			<div class="row card-wrapper">
 				<Card 
 					v-for="card in store.cardList"
 					:key="card.id"
 					:name="card.name"
 					:archetype="card.archetype"
-					:image="card.card_images.image_url"
+					:image="getImagePath(card.card_images[0].image_url)"
 				/>
 			</div>	
 		</div>
